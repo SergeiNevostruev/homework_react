@@ -1,0 +1,8 @@
+@import '../../../assets/style/vars.scss';
+.header {
+  grid-area: header;
+  background-color: $sub-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
