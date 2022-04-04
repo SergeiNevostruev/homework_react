@@ -6,9 +6,16 @@ import GetUserName from '../../../store/user/selector';
 // type Prop = {
 //   children: React.ReactNode | ReactChild;
 // };
+import { UserInfoReduserType } from '../../../store/user/types';
+import { RegReduserType } from '../../../store/regstore/types';
+
+type StoreStateType = {
+  userInfoReducer: UserInfoReduserType;
+  userRegReducer: RegReduserType;
+};
 
 const RequireAuth: React.FC = ({ children }) => {
-  const name = useSelector(GetUserName);
+  const name = useSelector((state: StoreStateType) => state.userInfoReducer.name);
   const location = useLocation();
   // const auth = true;
 

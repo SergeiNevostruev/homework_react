@@ -9,6 +9,7 @@ import MyPageContainer from './containers/MyPageContainer';
 import RequireAuth from './components/hoc/RequireAuth';
 import { AuthProvider } from './components/hoc/AuthProvider';
 
+
 const Page = () => (
   <RequireAuth>
     <MyPageContainer />
