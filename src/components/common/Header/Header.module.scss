@@ -4,5 +4,19 @@
   background-color: $sub-color;
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  & > ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+  }
+}
+
+.user_info {
+  display: flex;
+  align-items: center;
   justify-content: center;
 }

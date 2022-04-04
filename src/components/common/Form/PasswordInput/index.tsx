@@ -1,18 +1,22 @@
-import React, { ChangeEvent, FocusEventHandler } from 'react';
-import Eye from './Eye';
-import style from './Input.module.scss';
+import React, { ChangeEvent, useState } from 'react';
+import EyeIcon from './EyeIcon';
+import style from './PasswordInput.module.scss';
 
-type InputPropsType = {
+type PasswordInputPropsType = {
   title: string;
   id: string;
   placeholder: string;
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
-  type?: 'text' | 'password';
-  handleBlur: FocusEventHandler<HTMLInputElement>;
-  styleInput: React.HTMLAttributes<HTMLInputElement>;
-  click: boolean;
-  clicker: React.MouseEventHandler;
+  value: {
+    value: string;
+    error: boolean;
+  };
+  setValue: React.Dispatch<
+    React.SetStateAction<{
+      value: string;
+      error: boolean;
+    }>
+  >;
+  validation: () => boolean;
 };
 
 const PasswordInput = ({
@@ -21,28 +25,29 @@ const PasswordInput = ({
   placeholder,
   value,
   setValue,
-  type = 'text',
-  handleBlur,
-  styleInput,
-  click,
-  clicker,
-}: InputPropsType) => {
+  validation,
+}: PasswordInputPropsType) => {
   const handler = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
+    setValue((prev) => ({ ...prev, value: event.target.value }));
   };
+
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
   return (
     <label className={style.wrapper} htmlFor={id}>
       <span>{title}</span>
       <input
+        className={`${value.error ? style.error : ''}`}
         id={id}
         placeholder={placeholder}
-        value={value}
+        value={value.value}
         onChange={handler}
-        type={type}
-        onBlur={handleBlur}
-        style={styleInput}
+        type={passwordVisible ? 'text' : 'password'}
+        onBlur={validation}
       />
-      <Eye click={click} clicker={clicker} />
+      <button type="button" onClick={() => setPasswordVisible((prev) => !prev)}>
+        <EyeIcon visible={passwordVisible} />
+      </button>
     </label>
   );
 };

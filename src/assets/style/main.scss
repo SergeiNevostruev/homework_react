@@ -29,6 +29,7 @@ h4 {
 }
 a {
   color: $title-color;
+  // color: brown;
   text-decoration: none;
 }
 .container {
@@ -36,7 +37,8 @@ a {
   padding: 60px;
 }
 .active {
-  color: aqua;
+  // color: aqua;
+  color: fuchsia;
 }
 .post_list_wrapper {
   scroll-behavior: smooth;
