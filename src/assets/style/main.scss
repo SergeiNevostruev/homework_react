@@ -29,25 +29,12 @@ h4 {
 }
 a {
   color: $title-color;
-  // color: brown;
   text-decoration: none;
 }
 .container {
   max-width: 1280px;
   padding: 60px;
 }
-.active {
-  // color: aqua;
-  color: fuchsia;
-}
-.post_list_wrapper {
-  scroll-behavior: smooth;
-  max-height: 600px;
-  overflow-y: scroll;
-}
-
-.post_active {
-  a {
-    color: red;
-  }
-}
+// .active {
+//   color: green;
+// }

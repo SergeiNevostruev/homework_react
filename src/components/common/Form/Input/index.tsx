@@ -5,27 +5,19 @@ type InputPropsType = {
   title: string;
   id: string;
   placeholder: string;
-  value: {
-    value: string;
-    error: boolean;
-  };
-  setValue: React.Dispatch<
-    React.SetStateAction<{
-      value: string;
-      error: boolean;
-    }>
-  >;
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
   type?: 'text' | 'password';
 };
 
 const Input = ({ title, id, placeholder, value, setValue, type = 'text' }: InputPropsType) => {
   const handler = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue((prev) => ({ ...prev, value: event.target.value }));
+    setValue(event.target.value);
   };
   return (
     <label className={style.wrapper} htmlFor={id}>
       <span>{title}</span>
-      <input id={id} placeholder={placeholder} value={value.value} onChange={handler} type={type} />
+      <input id={id} placeholder={placeholder} value={value} onChange={handler} type={type} />
     </label>
   );
 };
